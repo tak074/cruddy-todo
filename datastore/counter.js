@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const sprintf = require('sprintf-js').sprintf;
 
-var counter = 0;
-
 // Private helper functions ////////////////////////////////////////////////////
 
 // Zero padded numbers can only be represented as strings.
@@ -39,8 +37,12 @@ const writeCounter = (count, callback) => {
 // Public API - Fix this function //////////////////////////////////////////////
 
 exports.getNextUniqueId = () => {
-  counter = counter + 1;
-  return zeroPaddedNumber(counter);
+  // use readCounter to get the current Index.
+  var currIndex = readCounter((first, second) => { return second; } );
+  const counter = currIndex + 1;
+  return writeCounter(counter, (a, b) => {
+    return Number(b);
+  });
 };
 
 

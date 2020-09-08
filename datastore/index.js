@@ -6,7 +6,13 @@ const counter = require('./counter');
 var items = {};
 
 // Public API - Fix these CRUD functions ///////////////////////////////////////
-
+//add
+//fs.writeFile
+//edit
+//fs.readFile
+//fs.writeFile
+//delete
+//fs.unlink
 exports.create = (text, callback) => {
   var id = counter.getNextUniqueId();
   items[id] = text;
