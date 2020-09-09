@@ -14,6 +14,10 @@ window.Todo = {
       data: {todoText: text},
       success: callback
     });
+    //generate id using getNextUniqueId
+    // writeFile( Todo.dataDir, (err, arg2) => {
+
+    // })
   },
 
   // Read all (cRud) -- collection

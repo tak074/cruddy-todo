@@ -36,12 +36,21 @@ const writeCounter = (count, callback) => {
 
 // Public API - Fix this function //////////////////////////////////////////////
 
-exports.getNextUniqueId = () => {
-  // use readCounter to get the current Index.
-  var currIndex = readCounter((first, second) => { return second; } );
-  const counter = currIndex + 1;
-  return writeCounter(counter, (a, b) => {
-    return Number(b);
+exports.getNextUniqueId = (callback) => {
+  // // use readCounter to get the current Index.
+  // var currIndex = readCounter((first, second) => { return second; } );
+  // const counter = currIndex + 1;
+  // return writeCounter(counter, (a, b) => {
+  //   return Number(b);
+  // });
+  //check the uniqueId
+  readCounter((err, uniqueId) => {
+    // return the uniqueId
+    uniqueId ++;
+    //create a new file using that uniqueId
+    writeCounter(uniqueId, (err2, counter) => {
+      callback(err2, counter);
+    });
   });
 };
 
